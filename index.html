@@ -763,9 +763,67 @@
   .resume-btn:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
   .resume-btn svg{ width:14px; height:14px; }
   .tl-badge.date{ text-transform:none; letter-spacing:0.01em; font-variant-numeric:tabular-nums; }
+/* ---------- intro gate: one tap unlocks sound, then the headline types ---------- */
+  body.gate-open{ overflow:hidden; }
+  .intro-gate{
+    position:fixed; inset:0; z-index:300; display:grid; place-items:center; cursor:pointer;
+    background:radial-gradient(60% 50% at 50% 58%, rgba(232,165,92,0.14), transparent 70%), #0c0d10;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .intro-gate.is-hidden{ opacity:0; visibility:hidden; }
+  .intro-gate:focus{ outline:none; }
+  .intro-gate:focus-visible .gate-cta{ outline:2px solid var(--accent); outline-offset:4px; }
+  .gate-inner{ text-align:center; padding:24px; }
+  .gate-word{
+    font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.02em;
+    font-size:clamp(64px, 16vw, 150px); line-height:1; margin:0 0 30px; color:var(--ink);
+  }
+  .gate-word span{ color:var(--accent); }
+  .gate-cta{
+    display:inline-flex; align-items:center; gap:10px; margin:0;
+    padding:12px 22px; border-radius:100px; border:1px solid rgba(241,237,228,0.25);
+    font-size:15px; font-weight:600; color:var(--ink);
+    animation:gate-pulse 2s ease-in-out infinite;
+  }
+  .gate-cta svg{ width:18px; height:18px; color:var(--accent); }
+  @keyframes gate-pulse{
+    0%, 100%{ box-shadow:0 0 0 0 rgba(241,237,228,0.2); }
+    50%{ box-shadow:0 0 0 12px rgba(241,237,228,0); }
+  }
+  .gate-note{ margin:24px 0 0; font-size:13px; letter-spacing:0.04em; color:var(--ink-dim); }
+
+  /* mobile browsers: size the hero to the visible screen, not behind the URL bar */
+  @supports (min-height:100svh){ .hero{ min-height:100svh; } }
+/* phones & tablets: the nav wraps to two rows, so start the hero text below it */
+  @media (max-width:860px){
+    .hero{ align-items:flex-start; }
+    .hero-content{ padding-top:172px; padding-bottom:72px; }
+  }
+  @media (max-width:400px){
+    .site-nav .wrap{ gap:10px; }
+    .logo{ font-size:18px; }
+    .resume-btn, .hello-btn{ padding:9px 13px; font-size:13px; }
+  }
+  @media (max-width:350px){ .resume-btn .rb-label{ display:none; } }
+  @media (min-width:641px) and (max-width:860px){
+    .time-pill{ width:auto; margin-left:auto; margin-right:auto; }
+    .time-pill button span{ display:inline; }
+  }
 </style>
 </head>
-<body>
+<body class="gate-open">
+
+  <div class="intro-gate" id="intro-gate" role="button" tabindex="0" aria-label="Enter the site">
+    <div class="gate-inner">
+      <p class="gate-word">akram<span>.</span></p>
+      <p class="gate-cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+        Tap or click to enter
+      </p>
+      <p class="gate-note">Full-stack software engineer · Dhaka</p>
+    </div>
+  </div>
 
   <a href="#experience" class="skip-link">Skip to content</a>
 
@@ -792,8 +850,8 @@
         </button>
       </div>
 
-      <a href="assets/Akramul-Hoque-Resume.pdf" class="resume-btn" download>
-        Resume
+      <a href="assets/Akramul-Hoque-Resume.pdf" class="resume-btn" download aria-label="Download resume">
+        <span class="rb-label">Resume</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"/></svg>
       </a>
       <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ekramul1320@gmail.com&amp;su=Hello%20Akram" target="_blank" rel="noopener" class="hello-btn">
@@ -829,9 +887,9 @@
       </p>
       <h1 class="hero-title typer" aria-label="Hello, I'm Akram."><span class="type-ghost" aria-hidden="true">Hello, I'm Akram.</span><span class="type-live" aria-hidden="true"><span class="type-text">Hello, I'm Akram.</span><span class="type-caret"></span></span></h1>
       <p class="hero-sub">
-        Software engineer in Dhaka, Bangladesh with 4+ years of experience. I design,
-        build and ship web software end to end, from system design and APIs to
-        frontends and production deploys.
+        Full-stack software engineer in Dhaka, Bangladesh with 4+ years of experience.
+        I build complete web products: backend APIs, databases and admin panels, the
+        interfaces on top, and the deploys that keep them running.
       </p>
       <a href="#work" class="hero-cta">
         See my work
@@ -863,7 +921,7 @@
               </div>
               <span class="tl-badge date">Jan 2026 – Present</span>
             </div>
-            <p class="tl-desc">Designing and building software end to end: system design, databases, APIs, frontends, testing and deployment, with a focus on performance, security and clean, maintainable code.</p>
+            <p class="tl-desc">Building full-stack software end to end: system design, backend APIs and databases, user interfaces, testing and deployment, with a focus on performance, security and clean, maintainable code.</p>
             <ul class="chips"><li>Laravel</li><li>PHP</li><li>TypeScript</li><li>Next.js</li><li>React</li><li>Node.js</li><li>SQL &amp; NoSQL</li><li>Docker</li></ul>
           </li>
           <li class="tl-item">
@@ -1443,32 +1501,39 @@
       caret.classList.remove("is-typing");
     }
 
-    if (reduce){ live.textContent = TEXT; return; }
-
-    // Browsers block sound until the visitor first clicks, taps or presses a
-    // key. Sound plays straight away when allowed; otherwise that first
-    // interaction switches it on: mid-typing it just continues with sound,
-    // after typing it types the headline again with sound (once, if visible).
-    let heardSound = false;
-    const GESTURES = ["pointerdown", "keydown", "touchstart"];
-    const onScreen = () => { const r = h1.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
-    function firstGesture(){
-      GESTURES.forEach(e => window.removeEventListener(e, firstGesture, true));
-      const ac = getAudio();
-      if (!ac) return;
-      ac.resume().then(() => {
-        if (heardSound) return;
-        heardSound = true;
-        if (!typing && onScreen()) type();
-      }).catch(() => {});
+    const gate = document.getElementById("intro-gate");
+    if (reduce){
+      gate.remove();
+      document.body.classList.remove("gate-open");
+      live.textContent = TEXT;
+      return;
     }
-    GESTURES.forEach(e => window.addEventListener(e, firstGesture, { capture:true, passive:true }));
 
-    setTimeout(() => {
+    // Browsers only allow sound after the visitor taps, clicks or presses a
+    // key, so the site opens on a "tap to enter" screen. That tap unlocks the
+    // audio, and the headline starts typing with sound from the first letter.
+    live.textContent = "";
+    let entered = false;
+    function enter(e){
+      if (entered) return;
+      if (e && e.type === "keydown" && !["Enter", " ", "Spacebar"].includes(e.key)) return;
+      entered = true;
       const ac = getAudio();
-      if (ac && ac.state === "running") heardSound = true;
-      type();
-    }, 500);
+      if (ac){
+        // a silent one-sample buffer fully unlocks audio on iOS Safari
+        const b = ac.createBufferSource();
+        b.buffer = ac.createBuffer(1, 1, 22050);
+        b.connect(ac.destination);
+        b.start(0);
+      }
+      gate.classList.add("is-hidden");
+      document.body.classList.remove("gate-open");
+      setTimeout(() => gate.remove(), 700);
+      setTimeout(type, 350);
+    }
+    gate.addEventListener("click", enter);
+    gate.addEventListener("keydown", enter);
+    gate.focus({ preventScroll:true });
   })();
 </script>
 
