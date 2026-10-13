@@ -1002,6 +1002,26 @@
     .time-pill{ order:0; margin-top:0; }
     .hero-content{ padding-top:104px; }
   }
+/* phones: project cards two per row */
+  @media (max-width:640px){
+    .card-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; }
+    .card{ padding:13px; border-radius:12px; }
+    .card-top{ margin-bottom:10px; }
+    .card-icon{ width:28px; height:28px; border-radius:8px; }
+    .card-icon svg{ width:14px; height:14px; }
+    .card-links{ gap:10px; }
+    .card-links svg{ width:15px; height:15px; }
+    .private{ font-size:10.5px; gap:4px; }
+    .private svg{ width:11px; height:11px; }
+    .card-title{ font-size:15px; line-height:1.25; margin-bottom:6px; }
+    .card-desc{
+      font-size:12px; line-height:1.45;
+      display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+      flex:none; max-height:calc(12px * 1.45 * 4);
+    }
+    .card-tags{ margin-top:auto; padding-top:10px; gap:3px 8px; }
+    .card-tags li{ font-size:10px; }
+  }
 </style>
 </head>
 <body>
