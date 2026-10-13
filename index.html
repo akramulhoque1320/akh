@@ -774,35 +774,6 @@
   .resume-btn:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
   .resume-btn svg{ width:14px; height:14px; }
   .tl-badge.date{ text-transform:none; letter-spacing:0.01em; font-variant-numeric:tabular-nums; }
-/* ---------- intro gate: one tap unlocks sound, then the headline types ---------- */
-  body.gate-open{ overflow:hidden; }
-  .intro-gate{
-    position:fixed; inset:0; z-index:300; display:grid; place-items:center; cursor:pointer;
-    background:radial-gradient(60% 50% at 50% 58%, rgba(232,165,92,0.14), transparent 70%), #0c0d10;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .intro-gate.is-hidden{ opacity:0; visibility:hidden; }
-  .intro-gate:focus{ outline:none; }
-  .intro-gate:focus-visible .gate-cta{ outline:2px solid var(--accent); outline-offset:4px; }
-  .gate-inner{ text-align:center; padding:24px; }
-  .gate-word{
-    font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.02em;
-    font-size:clamp(64px, 16vw, 150px); line-height:1; margin:0 0 30px; color:var(--ink);
-  }
-  .gate-word span{ color:var(--accent); }
-  .gate-cta{
-    display:inline-flex; align-items:center; gap:10px; margin:0;
-    padding:12px 22px; border-radius:100px; border:1px solid rgba(241,237,228,0.25);
-    font-size:15px; font-weight:600; color:var(--ink);
-    animation:gate-pulse 2s ease-in-out infinite;
-  }
-  .gate-cta svg{ width:18px; height:18px; color:var(--accent); }
-  @keyframes gate-pulse{
-    0%, 100%{ box-shadow:0 0 0 0 rgba(241,237,228,0.2); }
-    50%{ box-shadow:0 0 0 12px rgba(241,237,228,0); }
-  }
-  .gate-note{ margin:24px 0 0; font-size:13px; letter-spacing:0.04em; color:var(--ink-dim); }
 
   /* mobile browsers: size the hero to the visible screen, not behind the URL bar */
   @supports (min-height:100svh){ .hero{ min-height:100svh; } }
@@ -823,18 +794,7 @@
   }
 </style>
 </head>
-<body class="gate-open">
-
-  <div class="intro-gate" id="intro-gate" role="button" tabindex="0" aria-label="Enter the site">
-    <div class="gate-inner">
-      <p class="gate-word">akram<span>.</span></p>
-      <p class="gate-cta">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-        Tap or click to enter
-      </p>
-      <p class="gate-note">Full-stack software engineer · Dhaka</p>
-    </div>
-  </div>
+<body>
 
   <a href="#experience" class="skip-link">Skip to content</a>
 
@@ -1532,39 +1492,39 @@
       caret.classList.remove("is-typing");
     }
 
-    const gate = document.getElementById("intro-gate");
-    if (reduce){
-      gate.remove();
-      document.body.classList.remove("gate-open");
-      live.textContent = TEXT;
-      return;
-    }
+    if (reduce){ live.textContent = TEXT; return; }
 
-    // Browsers only allow sound after the visitor taps, clicks or presses a
-    // key, so the site opens on a "tap to enter" screen. That tap unlocks the
-    // audio, and the headline starts typing with sound from the first letter.
+    // The site opens straight away and the headline types at once. Browsers
+    // only allow sound after the visitor's first tap, click or key press, so
+    // that first interaction switches sound on: mid-typing it just carries on
+    // with sound; after typing it types the headline once more, with sound.
     live.textContent = "";
-    let entered = false;
-    function enter(e){
-      if (entered) return;
-      if (e && e.type === "keydown" && !["Enter", " ", "Spacebar"].includes(e.key)) return;
-      entered = true;
+    let heardSound = false;
+    const GESTURES = ["pointerdown", "touchend", "keydown"];
+    const onScreen = () => { const r = h1.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+    function firstGesture(){
+      GESTURES.forEach(e => window.removeEventListener(e, firstGesture, true));
       const ac = getAudio();
-      if (ac){
-        // a silent one-sample buffer fully unlocks audio on iOS Safari
-        const b = ac.createBufferSource();
-        b.buffer = ac.createBuffer(1, 1, 22050);
-        b.connect(ac.destination);
-        b.start(0);
-      }
-      gate.classList.add("is-hidden");
-      document.body.classList.remove("gate-open");
-      setTimeout(() => gate.remove(), 700);
-      setTimeout(type, 350);
+      if (!ac) return;
+      // a silent one-sample buffer fully unlocks audio on iOS Safari
+      const b = ac.createBufferSource();
+      b.buffer = ac.createBuffer(1, 1, 22050);
+      b.connect(ac.destination);
+      b.start(0);
+      ac.resume().then(() => {
+        if (heardSound) return;
+        heardSound = true;
+        if (!typing && onScreen()) type();
+      }).catch(() => {});
     }
-    gate.addEventListener("click", enter);
-    gate.addEventListener("keydown", enter);
-    gate.focus({ preventScroll:true });
+    GESTURES.forEach(e => window.addEventListener(e, firstGesture, { capture:true, passive:true }));
+
+    setTimeout(() => {
+      // sound plays from the first letter if the browser already allows it
+      const ac = getAudio();
+      if (ac && ac.state === "running") heardSound = true;
+      type();
+    }, 400);
   })();
 // experience timeline: the line fills as you scroll and each dot lights up when reached
   (function timelineProgress(){
