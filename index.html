@@ -925,7 +925,32 @@
     .hero-stats{ margin-top:28px; padding-top:18px; }
     .hero-stats strong{ font-size:23px; }
     .hero-stats span{ font-size:11.5px; }
-  }</style>
+  }/* phones: one-row nav — logo · small time switcher · resume icon · say hello */
+  @media (max-width:640px){
+    .site-nav .wrap{ flex-wrap:nowrap; gap:8px; }
+    .time-pill{ order:0; width:auto; margin:0; padding:3px; gap:0; }
+    .time-pill button{ padding:6px 7px; }
+    .time-pill button svg{ width:13px; height:13px; }
+    .resume-btn{ padding:9px; }
+    .resume-btn .rb-label{ display:none; }
+    .hello-btn{ padding:9px 13px; font-size:13px; }
+    .hero-content{ padding-top:104px; }
+  }
+  @media (max-width:400px){
+    .site-nav .wrap{ gap:6px; }
+    .logo{ font-size:17px; }
+    .time-pill button{ padding:5px 6px; }
+    .resume-btn{ padding:8px; }
+    .hello-btn{ padding:8px 11px; font-size:12.5px; gap:4px; }
+    .hello-btn svg{ width:12px; height:12px; }
+  }
+  /* very small phones: let the switcher drop to its own row again */
+  @media (max-width:350px){
+    .site-nav .wrap{ flex-wrap:wrap; }
+    .time-pill{ order:3; margin-top:10px; }
+    .hero-content{ padding-top:150px; }
+  }
+</style>
 </head>
 <body>
 
