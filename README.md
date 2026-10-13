@@ -1,6 +1,6 @@
 # Frontend Portfolio
 
-Personal portfolio of **Akramul Hoque (Ahnaf)**, a software engineer in Dhaka. It is a single self-contained HTML page with no frameworks and no build step.
+Personal portfolio of **Akramul Hoque (Akram)**, a software engineer in Dhaka with 4+ years of experience. It is a single self-contained HTML page with no frameworks and no build step.
 
 **Live site:** https://akramulhoque1320.github.io/frontend-portfolio/
 
@@ -10,7 +10,7 @@ Personal portfolio of **Akramul Hoque (Ahnaf)**, a software engineer in Dhaka. I
 - The dusk hour adjusts to the visitor's timezone (read via `Intl`, so no location permission is needed)
 - Night-only stars, fireflies and a glowing lamp; flocks of birds by day
 - A time pill to preview each look, which reverts to the real time after 10 seconds
-- Sections for work, projects, what I'm exploring, and contact
+- Experience timeline, featured client work with live-site previews, filterable project cards, and contact
 - Responsive layout, a skip link, keyboard focus styles and `prefers-reduced-motion` support
 
 ## Run locally

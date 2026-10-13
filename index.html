@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Akramul Hoque (Ahnaf) — Portfolio</title>
-<meta name="description" content="Akramul Hoque (Ahnaf), software engineer in Dhaka. I design, build and ship reliable software, from system design to production deploys." />
+<title>Akramul Hoque — Portfolio</title>
+<meta name="description" content="Akramul Hoque (Akram), software engineer in Dhaka with 4+ years of experience. I design, build and ship reliable web software with Laravel, PHP and JavaScript." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -463,15 +463,147 @@
     section.page-section{ padding:64px 0; }
     .scroll-hint{ display:none; }
   }
+
+  /* ---------- hero stats ---------- */
+  .hero-stats{ display:flex; gap:44px; flex-wrap:wrap; margin:48px 0 0; padding:0; list-style:none; }
+  .hero-stats strong{
+    display:block; font-family:'Fraunces', serif; font-weight:500;
+    font-size:34px; line-height:1; color:var(--accent); transition:color 0.6s ease;
+  }
+  .hero-stats span{ display:block; margin-top:8px; font-size:13px; color:var(--ink-dim); }
+
+  /* ---------- shared chips / buttons ---------- */
+  .chips, .card-tags{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:18px 0 0; padding:0; }
+  .chips li{
+    font-size:12.5px; color:var(--ink-dim);
+    border:1px solid var(--line); border-radius:100px; padding:5px 12px;
+  }
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px; margin-top:28px;
+    text-decoration:none; font-weight:600; font-size:14px;
+    padding:12px 22px; border-radius:100px;
+    background:var(--accent); color:#0c0d10;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); opacity:0.9; }
+  .btn-primary svg{ width:14px; height:14px; }
+
+  /* ---------- experience timeline ---------- */
+  .timeline{ list-style:none; margin:0; padding:0 0 0 36px; position:relative; }
+  .timeline::before{
+    content:""; position:absolute; left:7px; top:8px; bottom:8px; width:1px;
+    background:linear-gradient(var(--accent), var(--line) 40%);
+  }
+  .tl-item{ position:relative; padding:0 0 52px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:""; position:absolute; left:-36px; top:6px;
+    width:15px; height:15px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent);
+  }
+  .tl-item.is-current::before{ background:var(--accent); box-shadow:0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .tl-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+  .tl-company{ font-family:'Fraunces', serif; font-weight:500; font-size:24px; margin:0; }
+  .tl-role{ margin:4px 0 0; font-size:14.5px; font-weight:600; color:var(--ink); }
+  .tl-role span{ font-weight:400; color:var(--ink-dim); }
+  .tl-badge{
+    font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase;
+    padding:6px 12px; border-radius:100px;
+    border:1px solid var(--line); color:var(--ink-dim);
+  }
+  .is-current .tl-badge{ border-color:var(--accent); color:var(--accent); }
+  .tl-desc{ color:var(--ink-dim); font-size:15px; max-width:62ch; margin:14px 0 0; }
+
+  /* ---------- featured projects ---------- */
+  .feature{
+    display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:center;
+  }
+  .feature + .feature{ margin-top:96px; }
+  .feature:nth-of-type(even) .feature-media{ order:2; }
+  .browser{
+    display:block; border-radius:14px; overflow:hidden; text-decoration:none;
+    border:1px solid rgba(255,255,255,0.1); background:#16181d;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,0,0,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .browser:hover{ transform:translateY(-6px); box-shadow:0 50px 90px -30px rgba(0,0,0,0.85), 0 0 0 1px var(--accent); }
+  .browser-bar{ display:flex; align-items:center; gap:7px; height:38px; padding:0 14px; background:#1d2027; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .browser-bar i{ width:10px; height:10px; border-radius:50%; background:#3a3e48; }
+  .browser-bar i:nth-child(1){ background:#ff5f57; }
+  .browser-bar i:nth-child(2){ background:#febc2e; }
+  .browser-bar i:nth-child(3){ background:#28c840; }
+  .browser-url{
+    margin-left:12px; flex:1; max-width:260px;
+    font-size:12px; color:var(--ink-dim); text-align:center;
+    background:rgba(255,255,255,0.06); border-radius:6px; padding:3px 12px;
+  }
+  .browser img{ display:block; width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; object-position:top; transition:transform 0.6s ease; }
+  .browser:hover img{ transform:scale(1.02); }
+  .eyebrow{ font-size:12px; font-weight:600; letter-spacing:0.08em; color:var(--accent); margin:0 0 12px; transition:color 0.6s ease; }
+  .feature-title{ font-family:'Fraunces', serif; font-weight:500; font-size:clamp(26px, 3vw, 34px); line-height:1.15; margin:0 0 14px; }
+  .feature-desc{ color:var(--ink-dim); font-size:15.5px; margin:0 0 20px; }
+  .feature-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .feature-list li{ display:flex; gap:10px; align-items:flex-start; font-size:14.5px; }
+  .feature-list svg{ width:16px; height:16px; flex:0 0 auto; margin-top:3px; color:var(--accent); }
+
+  /* ---------- project cards ---------- */
+  .filters{ display:flex; flex-wrap:wrap; gap:8px; }
+  .filter-btn{
+    font-family:'Inter', sans-serif; font-size:13px; font-weight:600; cursor:pointer;
+    padding:8px 16px; border-radius:100px;
+    background:transparent; color:var(--ink-dim); border:1px solid var(--line);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .filter-btn:hover{ color:var(--ink); border-color:rgba(241,237,228,0.4); }
+  .filter-btn[aria-pressed="true"]{ background:var(--ink); color:#14161b; border-color:var(--ink); }
+  .card-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap:20px; }
+  .card{
+    display:flex; flex-direction:column;
+    padding:28px; border-radius:16px;
+    background:linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+    border:1px solid var(--line);
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .card:hover{ transform:translateY(-5px); border-color:color-mix(in srgb, var(--accent) 60%, transparent); }
+  .card[hidden]{ display:none; }
+  .card-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; }
+  .card-icon{
+    display:grid; place-items:center; width:44px; height:44px; border-radius:12px;
+    background:color-mix(in srgb, var(--accent) 14%, transparent); color:var(--accent);
+    transition: color 0.6s ease, background 0.6s ease;
+  }
+  .card-icon svg{ width:22px; height:22px; }
+  .card-links{ display:flex; gap:14px; align-items:center; }
+  .card-links a{ color:var(--ink-dim); display:inline-flex; transition:color 0.2s ease; }
+  .card-links a:hover{ color:var(--accent); }
+  .card-links svg{ width:19px; height:19px; }
+  .private{ display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--ink-dim); }
+  .private svg{ width:13px; height:13px; }
+  .card-title{ font-family:'Fraunces', serif; font-weight:500; font-size:21px; margin:0 0 10px; }
+  .card-title a{ text-decoration:none; transition:color 0.2s ease; }
+  .card-title a:hover{ color:var(--accent); }
+  .card-desc{ color:var(--ink-dim); font-size:14.5px; margin:0; flex:1; }
+  .card-tags{ margin-top:22px; gap:6px 14px; }
+  .card-tags li{ font-size:12px; color:var(--ink-dim); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  @media (max-width:860px){
+    .feature{ grid-template-columns:1fr; gap:32px; }
+    .feature:nth-of-type(even) .feature-media{ order:0; }
+    .feature + .feature{ margin-top:72px; }
+  }
+  @media (max-width:640px){
+    .hero-stats{ gap:28px; }
+    .hero-stats strong{ font-size:28px; }
+  }
 </style>
 </head>
 <body>
 
-  <a href="#work" class="skip-link">Skip to content</a>
+  <a href="#experience" class="skip-link">Skip to content</a>
 
   <header class="site-nav">
     <div class="wrap">
-      <a href="#" class="logo">ahnaf</a>
+      <a href="#" class="logo">akram</a>
 
       <div class="time-pill" role="group" aria-label="Preview time of day">
         <button data-time="morning" aria-pressed="true">
@@ -523,168 +655,186 @@
       <p class="greeting" id="greeting">
         <span id="greeting-text">Good morning</span> <span class="dim" id="greeting-note">— coffee's hot, code's compiling.</span>
       </p>
-      <h1 class="hero-title">Hi, I'm Ahnaf. I build reliable software.</h1>
+      <h1 class="hero-title">Hello, I'm Akram.</h1>
       <p class="hero-sub">
-        Software engineer in Dhaka, Bangladesh. I design, build and ship software
-        end to end, from system design and APIs to frontends and production deploys.
+        Software engineer in Dhaka, Bangladesh with 4+ years of experience. I design,
+        build and ship web software end to end, from system design and APIs to
+        frontends and production deploys.
       </p>
       <a href="#work" class="hero-cta">
         See my work
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
+      <ul class="hero-stats">
+        <li><strong>4+</strong><span>Years of experience</span></li>
+        <li><strong>9</strong><span>Projects shipped</span></li>
+        <li><strong>3</strong><span>Companies</span></li>
+      </ul>
     </div>
 
     <div class="scroll-hint">SCROLL</div>
   </section>
 
   <main>
-    <section class="page-section" id="work">
+    <section class="page-section" id="experience">
       <div class="wrap">
         <div class="section-head">
-          <h2>Where I work.</h2>
-          <p>Where I'm building software right now.</p>
+          <h2>Experience.</h2>
+          <p>4+ years building web software for companies and clients.</p>
         </div>
-
-        <div class="work-item">
-          <span class="work-index">01</span>
-          <div>
-            <p class="work-meta">SOFTWARE ENGINEER · DHAKA, BANGLADESH</p>
-            <h3 class="work-role">Infinity Vision</h3>
-            <p class="work-desc">I design and build software end to end: system design, databases, APIs,
-              frontends, testing and deployment, with a focus on performance, security and clean,
-              maintainable code.</p>
-            <ul class="stack">
-              <li>TypeScript</li><li>JavaScript</li><li>Python</li><li>PHP</li><li>Java</li>
-              <li>Laravel</li><li>React</li><li>Node.js</li><li>SQL &amp; NoSQL</li><li>Docker</li>
-            </ul>
-          </div>
-        </div>
+        <ol class="timeline">
+          <li class="tl-item is-current">
+            <div class="tl-head">
+              <div>
+                <h3 class="tl-company">Infinity Vision</h3>
+                <p class="tl-role">Software Engineer <span>· Dhaka, Bangladesh</span></p>
+              </div>
+              <span class="tl-badge">Current</span>
+            </div>
+            <p class="tl-desc">Designing and building software end to end: system design, databases, APIs, frontends, testing and deployment, with a focus on performance, security and clean, maintainable code.</p>
+            <ul class="chips"><li>Laravel</li><li>PHP</li><li>TypeScript</li><li>React</li><li>Node.js</li><li>SQL &amp; NoSQL</li><li>Docker</li></ul>
+          </li>
+          <li class="tl-item">
+            <div class="tl-head">
+              <div>
+                <h3 class="tl-company">Digital Hub Bangladesh</h3>
+                <p class="tl-role">Web Developer <span>· Bangladesh</span></p>
+              </div>
+              <span class="tl-badge">Previous</span>
+            </div>
+            <p class="tl-desc">Built and maintained websites and web applications for clients, from the database and backend through to responsive frontends.</p>
+            <ul class="chips"><li>PHP</li><li>Laravel</li><li>JavaScript</li><li>MySQL</li></ul>
+          </li>
+          <li class="tl-item">
+            <div class="tl-head">
+              <div>
+                <h3 class="tl-company">Tai Global</h3>
+                <p class="tl-role">Web Developer <span>· Bangladesh</span></p>
+              </div>
+              <span class="tl-badge">Where it started</span>
+            </div>
+            <p class="tl-desc">Where my professional journey began: hands-on development on real client projects, learning to ship reliable, production-ready code.</p>
+            <ul class="chips"><li>PHP</li><li>JavaScript</li><li>HTML &amp; CSS</li></ul>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section class="page-section" id="laravel">
+    <section class="page-section" id="work">
       <div class="wrap">
         <div class="section-head">
-          <h2>Laravel projects.</h2>
-          <p>Live client sites and apps I've built with Laravel.</p>
+          <h2>Selected work.</h2>
+          <p>Live client projects built with Laravel, in production today.</p>
         </div>
 
-        <div class="work-item">
-          <span class="work-index">01</span>
-          <div>
-            <p class="work-meta">LARAVEL · FILAMENT · ENGLISH / BANGLA</p>
-            <h3 class="work-role"><a href="https://wonderkdc.com" target="_blank" rel="noopener">Wonder Kids Development Center</a></h3>
-            <p class="work-desc">Website for an autism and child development centre in Uttara, Dhaka: eight therapy services, appointment and assessment booking, events, gallery, blog and donations, all managed from a Filament admin.</p>
-            <p class="work-links">
-              <a href="https://wonderkdc.com" target="_blank" rel="noopener">Visit wonderkdc.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
+        <article class="feature">
+          <a class="feature-media browser" href="https://wonderkdc.com" target="_blank" rel="noopener" aria-label="Open Wonder Kids Development Center">
+            <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">wonderkdc.com</span></div>
+            <img src="assets/wonderkdc.webp" alt="Home page of Wonder Kids Development Center" width="1200" height="750" loading="lazy" />
+          </a>
+          <div class="feature-body">
+            <p class="eyebrow">CLIENT PROJECT · HEALTHCARE</p>
+            <h3 class="feature-title">Wonder Kids Development Center</h3>
+            <p class="feature-desc">Website for an autism and child development centre in Uttara, Dhaka, helping parents find the right therapy and book an assessment in a few clicks.</p>
+            <ul class="feature-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Eight therapy services with individual care plans</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Appointment and assessment booking</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Events, gallery, blog and donations</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Content managed from a Filament admin panel</span></li></ul>
+            <ul class="chips"><li>Laravel</li><li>Filament</li><li>PHP</li><li>English / Bangla</li></ul>
+            <a class="btn-primary" href="https://wonderkdc.com" target="_blank" rel="noopener">Visit live site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </div>
-        </div>
+        </article>
 
-        <div class="work-item">
-          <span class="work-index">02</span>
-          <div>
-            <p class="work-meta">LARAVEL 12 · FILAMENT · E-COMMERCE</p>
-            <h3 class="work-role"><a href="https://smartlifeorg.com" target="_blank" rel="noopener">SmartLife</a></h3>
-            <p class="work-desc">Online store for a Dubai tech-accessories brand: category catalogue, cart, wishlist, customer accounts, order tracking, cash-on-delivery and card checkout, with an English/Arabic switch.</p>
-            <p class="work-links">
-              <a href="https://smartlifeorg.com" target="_blank" rel="noopener">Visit smartlifeorg.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
+        <article class="feature">
+          <a class="feature-media browser" href="https://smartlifeorg.com" target="_blank" rel="noopener" aria-label="Open SmartLife">
+            <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">smartlifeorg.com</span></div>
+            <img src="assets/smartlife.webp" alt="Home page of SmartLife" width="1200" height="750" loading="lazy" />
+          </a>
+          <div class="feature-body">
+            <p class="eyebrow">CLIENT PROJECT · E-COMMERCE</p>
+            <h3 class="feature-title">SmartLife</h3>
+            <p class="feature-desc">Online store for a Dubai tech-accessories brand selling chargers and cables, built for fast browsing and a smooth checkout.</p>
+            <ul class="feature-list"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Category catalogue with search and wishlist</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Cart, customer accounts and order tracking</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Cash-on-delivery and card checkout</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg><span>Products and orders managed from a Filament admin</span></li></ul>
+            <ul class="chips"><li>Laravel 12</li><li>Filament</li><li>PHP</li><li>English / Arabic</li></ul>
+            <a class="btn-primary" href="https://smartlifeorg.com" target="_blank" rel="noopener">Visit live site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
           </div>
-        </div>
-
-        <div class="work-item">
-          <span class="work-index">03</span>
-          <div>
-            <p class="work-meta">LARAVEL · MONGODB · E-COMMERCE</p>
-            <h3 class="work-role">Hello Baby Bees</h3>
-            <p class="work-desc">Kids' clothing shop with a customer storefront and a Laravel admin panel backed by MongoDB.</p>
-            <p class="work-links">
-              <span>Private codebase</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="work-item">
-          <span class="work-index">04</span>
-          <div>
-            <p class="work-meta">LARAVEL · BLADE · ELOQUENT</p>
-            <h3 class="work-role">Budget Tracker</h3>
-            <p class="work-desc">Personal finance app to log income and expenses, see balances on a dashboard and read monthly reports.</p>
-            <p class="work-links">
-              <span>Private codebase</span>
-            </p>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
     <section class="page-section" id="projects">
       <div class="wrap">
         <div class="section-head">
-          <h2>Open-source projects.</h2>
-          <p>Open-source projects, all public on GitHub with source and setup notes.</p>
-        </div>
-
-        <div class="work-item">
-          <span class="work-index">01</span>
-          <div>
-            <p class="work-meta">HTML · CSS · JAVASCRIPT</p>
-            <h3 class="work-role"><a href="https://github.com/akramulhoque1320/frontend-portfolio" target="_blank" rel="noopener">Frontend Portfolio</a></h3>
-            <p class="work-desc">This site. The sky, light, birds and greeting follow the visitor's own clock, with a manual morning-to-night preview.</p>
-            <p class="work-links">
-              <a href="https://github.com/akramulhoque1320/frontend-portfolio" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-              <a href="https://akramulhoque1320.github.io/frontend-portfolio/" target="_blank" rel="noopener">Live site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
+          <h2>More projects.</h2>
+          <div class="filters" role="group" aria-label="Filter projects">
+            <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="laravel" aria-pressed="false">Laravel</button>
+            <button class="filter-btn" data-filter="python" aria-pressed="false">Python</button>
+            <button class="filter-btn" data-filter="java" aria-pressed="false">Java</button>
+            <button class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
           </div>
         </div>
-
-        <div class="work-item">
-          <span class="work-index">02</span>
-          <div>
-            <p class="work-meta">PYTHON · CLI · UNITTEST</p>
-            <h3 class="work-role"><a href="https://github.com/akramulhoque1320/python-expense-tracker" target="_blank" rel="noopener">Python Expense Tracker</a></h3>
-            <p class="work-desc">Command-line tool to record expenses, see monthly summaries per category and export to CSV.</p>
-            <p class="work-links">
-              <a href="https://github.com/akramulhoque1320/python-expense-tracker" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
-          </div>
-        </div>
-
-        <div class="work-item">
-          <span class="work-index">03</span>
-          <div>
-            <p class="work-meta">PYTHON · FLASK · SQLITE · PYTEST</p>
-            <h3 class="work-role"><a href="https://github.com/akramulhoque1320/flask-ecommerce" target="_blank" rel="noopener">Flask E-commerce Shop</a></h3>
-            <p class="work-desc">Online shop with a product catalogue, search, cart, checkout and stock-aware orders.</p>
-            <p class="work-links">
-              <a href="https://github.com/akramulhoque1320/flask-ecommerce" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
-          </div>
-        </div>
-
-        <div class="work-item">
-          <span class="work-index">04</span>
-          <div>
-            <p class="work-meta">JAVA 17 · OOP · COLLECTIONS</p>
-            <h3 class="work-role"><a href="https://github.com/akramulhoque1320/java-library-management" target="_blank" rel="noopener">Java Library Management</a></h3>
-            <p class="work-desc">Console system for books, members, 14-day loans, late fines and file-based storage.</p>
-            <p class="work-links">
-              <a href="https://github.com/akramulhoque1320/java-library-management" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
-          </div>
-        </div>
-
-        <div class="work-item">
-          <span class="work-index">05</span>
-          <div>
-            <p class="work-meta">PYTHON · DJANGO 5 · SQLITE</p>
-            <h3 class="work-role"><a href="https://github.com/akramulhoque1320/django-blog" target="_blank" rel="noopener">Django Blog</a></h3>
-            <p class="work-desc">Blog with categories, search, pagination, moderated comments and a customised admin.</p>
-            <p class="work-links">
-              <a href="https://github.com/akramulhoque1320/django-blog" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-            </p>
-          </div>
+        <div class="card-grid">
+          <article class="card" data-cat="laravel">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><span class="private"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private</span></div>
+            </div>
+            <h3 class="card-title">Hello Baby Bees</h3>
+            <p class="card-desc">Kids' clothing shop with a customer storefront and a Laravel admin panel backed by MongoDB.</p>
+            <ul class="card-tags"><li>Laravel</li><li>MongoDB</li><li>E-commerce</li></ul>
+          </article>
+          <article class="card" data-cat="laravel">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><span class="private"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private</span></div>
+            </div>
+            <h3 class="card-title">Budget Tracker</h3>
+            <p class="card-desc">Personal finance app to log income and expenses, see balances on a dashboard and read monthly reports.</p>
+            <ul class="card-tags"><li>Laravel</li><li>Blade</li><li>Eloquent</li></ul>
+          </article>
+          <article class="card" data-cat="python web">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><a href="https://github.com/akramulhoque1320/flask-ecommerce" target="_blank" rel="noopener" aria-label="Flask E-commerce Shop source code on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></div>
+            </div>
+            <h3 class="card-title"><a href="https://github.com/akramulhoque1320/flask-ecommerce" target="_blank" rel="noopener">Flask E-commerce Shop</a></h3>
+            <p class="card-desc">Online shop with a product catalogue, search, cart, checkout and stock-aware orders.</p>
+            <ul class="card-tags"><li>Python</li><li>Flask</li><li>SQLite</li><li>pytest</li></ul>
+          </article>
+          <article class="card" data-cat="python web">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><a href="https://github.com/akramulhoque1320/django-blog" target="_blank" rel="noopener" aria-label="Django Blog source code on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></div>
+            </div>
+            <h3 class="card-title"><a href="https://github.com/akramulhoque1320/django-blog" target="_blank" rel="noopener">Django Blog</a></h3>
+            <p class="card-desc">Blog with categories, search, pagination, moderated comments and a customised admin.</p>
+            <ul class="card-tags"><li>Python</li><li>Django 5</li><li>SQLite</li></ul>
+          </article>
+          <article class="card" data-cat="python">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><a href="https://github.com/akramulhoque1320/python-expense-tracker" target="_blank" rel="noopener" aria-label="Python Expense Tracker source code on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></div>
+            </div>
+            <h3 class="card-title"><a href="https://github.com/akramulhoque1320/python-expense-tracker" target="_blank" rel="noopener">Python Expense Tracker</a></h3>
+            <p class="card-desc">Command-line tool to record expenses, see monthly summaries per category and export to CSV.</p>
+            <ul class="card-tags"><li>Python</li><li>CLI</li><li>unittest</li></ul>
+          </article>
+          <article class="card" data-cat="java">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><a href="https://github.com/akramulhoque1320/java-library-management" target="_blank" rel="noopener" aria-label="Java Library Management source code on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a></div>
+            </div>
+            <h3 class="card-title"><a href="https://github.com/akramulhoque1320/java-library-management" target="_blank" rel="noopener">Java Library Management</a></h3>
+            <p class="card-desc">Console system for books, members, 14-day loans, late fines and file-based storage.</p>
+            <ul class="card-tags"><li>Java 17</li><li>OOP</li><li>Collections</li></ul>
+          </article>
+          <article class="card" data-cat="web">
+            <div class="card-top">
+              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+              <div class="card-links"><a href="https://github.com/akramulhoque1320/frontend-portfolio" target="_blank" rel="noopener" aria-label="Frontend Portfolio source code on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a><a href="https://akramulhoque1320.github.io/frontend-portfolio/" target="_blank" rel="noopener" aria-label="Open Frontend Portfolio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+            </div>
+            <h3 class="card-title"><a href="https://github.com/akramulhoque1320/frontend-portfolio" target="_blank" rel="noopener">Frontend Portfolio</a></h3>
+            <p class="card-desc">This site: the sky, light and greeting follow the visitor's own clock.</p>
+            <ul class="card-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </article>
         </div>
       </div>
     </section>
@@ -717,7 +867,7 @@
 
   <footer>
     <div class="wrap footer-row">
-      <span class="name">© Akramul Hoque (Ahnaf)</span>
+      <span class="name">© Akramul Hoque</span>
       <ul class="footer-links">
         <li><a href="https://github.com/akramulhoque1320" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/akh1320/" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -794,8 +944,9 @@
   function timeSlotFromHour(h, duskHour){
     const dusk = typeof duskHour === "number" ? duskHour : DEFAULT_DUSK_HOUR;
     if (h >= 5  && h < 12) return "morning";
-    if (h >= 12 && h < dusk - 3) return "afternoon";
-    if (h >= dusk - 3 && h < dusk) return "evening";
+    const evening = Math.min(17, dusk - 1);
+    if (h >= 12 && h < evening) return "afternoon";
+    if (h >= evening && h < dusk) return "evening";
     return "night";
   }
 
@@ -913,6 +1064,16 @@
     scrollY = window.scrollY;
     skyLayers.forEach(l => { l.style.transform = `translateY(${scrollY * 0.12}px)`; });
   }, { passive:true });
+  // project filters
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      document.querySelectorAll(".filter-btn").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+      document.querySelectorAll(".card").forEach(card => {
+        card.hidden = f !== "all" && !card.dataset.cat.split(" ").includes(f);
+      });
+    });
+  });
 </script>
 
 </body>
