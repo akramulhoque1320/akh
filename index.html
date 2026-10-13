@@ -1112,6 +1112,13 @@
       letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); text-shadow:none;
     }
   }
+/* phones: the stats card sits below the picture on the plain background,
+     the scene ends just above it */
+  @media (max-width:640px){
+    .scene{ bottom:132px; }
+    .hero-content{ padding-bottom:24px; }
+    .hero-stats{ margin-top:calc(var(--scene-h) * 0.62); background:rgba(255,255,255,0.03); }
+  }
 </style>
 </head>
 <body>
