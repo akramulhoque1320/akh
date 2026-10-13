@@ -950,6 +950,58 @@
     .time-pill{ order:3; margin-top:10px; }
     .hero-content{ padding-top:150px; }
   }
+/* ================= phones: nav shows Resume (not Say hello), compact sections ================= */
+  @media (max-width:640px){
+    .hello-btn{ display:none; }
+    .resume-btn{ padding:8px 14px; font-size:13px; }
+    .resume-btn .rb-label{ display:inline; }
+
+    section.page-section{ padding:52px 0; }
+    .section-head{ margin-bottom:28px; }
+    .section-head h2{ font-size:24px; }
+    .section-head p{ font-size:13.5px; }
+
+    /* experience */
+    .tl-item{ padding-bottom:30px; }
+    .tl-item::before{ width:13px; height:13px; left:-35px; top:5px; }
+    .tl-company{ font-size:18px; }
+    .tl-role{ font-size:13px; margin-top:2px; }
+    .tl-loc{ font-size:12px; }
+    .tl-head{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .tl-badge{ font-size:10.5px; padding:4px 9px; }
+    .tl-desc{ font-size:13.5px; line-height:1.55; margin-top:10px; }
+    .chips{ gap:5px; margin-top:12px; }
+    .chips li{ font-size:11px; padding:3px 9px; }
+
+    /* selected work */
+    .feature{ gap:16px; }
+    .feature + .feature{ margin-top:46px; }
+    .eyebrow{ font-size:10.5px; margin-bottom:6px; }
+    .feature-title{ font-size:20px; margin-bottom:8px; }
+    .feature-desc{ font-size:13.5px; line-height:1.55; margin-bottom:12px; }
+    .feature-list{ gap:6px; }
+    .feature-list li{ font-size:13px; gap:8px; }
+    .feature-list svg{ width:14px; height:14px; margin-top:2px; }
+    .feature-body .btn-primary{ margin-top:16px; padding:10px 18px; font-size:13px; }
+
+    /* more projects */
+    .card-grid{ gap:10px; }
+    .card{ padding:16px; border-radius:12px; }
+    .card-top{ margin-bottom:10px; }
+    .card-icon{ width:32px; height:32px; border-radius:9px; }
+    .card-icon svg{ width:16px; height:16px; }
+    .card-links svg{ width:17px; height:17px; }
+    .card-title{ font-size:17px; margin-bottom:6px; }
+    .card-desc{ font-size:13px; line-height:1.5; }
+    .card-tags{ margin-top:12px; }
+    .card-tags li{ font-size:11px; }
+  }
+  /* very small phones fit in one row now that Say hello is hidden */
+  @media (max-width:350px){
+    .site-nav .wrap{ flex-wrap:nowrap; }
+    .time-pill{ order:0; margin-top:0; }
+    .hero-content{ padding-top:104px; }
+  }
 </style>
 </head>
 <body>
