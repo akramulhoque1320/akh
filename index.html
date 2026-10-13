@@ -882,6 +882,21 @@
     .filters{ gap:6px; }
     .filter-btn{ padding:7px 12px; font-size:12.5px; }
   }
+/* phones & portrait tablets: show the whole scene (no side cropping) as a
+     full-width picture under the nav, with the intro text below it */
+  @media (max-width:860px){
+    header.site-nav{ position:relative; background:var(--bg); padding:18px 0 14px; }
+    .hero{ display:block; min-height:0; overflow:visible; background:var(--bg); }
+    .hero::after{ display:none; }
+    .scene{ position:relative; inset:auto; width:100%; aspect-ratio:1600 / 1067; }
+    .scene-layer{ inset:0; }
+    .scene::after{
+      content:""; position:absolute; inset:0; z-index:6; pointer-events:none;
+      background:linear-gradient(180deg, transparent 72%, var(--bg) 100%);
+    }
+    .hero-content{ padding-top:22px; padding-bottom:56px; }
+    .scroll-hint{ display:none; }
+  }
 </style>
 </head>
 <body>
