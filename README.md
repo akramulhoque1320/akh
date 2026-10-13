@@ -1,27 +1,26 @@
 # Frontend Portfolio
 
-A responsive personal portfolio site built with plain **HTML, CSS and JavaScript**, with no frameworks and no build step.
+Personal portfolio of **Akramul Hoque (Ahnaf)**, a software engineer in Dhaka. It is a single self-contained HTML page with no frameworks and no build step.
 
-**Live demo:** https://akramulhoque1320.github.io/frontend-portfolio/
+**Live site:** https://akramulhoque1320.github.io/frontend-portfolio/
 
 ## Features
 
-- Responsive layout with a mobile menu
-- Light/dark theme toggle that remembers your choice
-- Animated typing headline and scroll-reveal sections
-- Project cards rendered from data, with category filters
-- Contact form with client-side validation that opens your email app
+- **Time-of-day hero:** the sky, tree, accent colour and greeting change to morning, afternoon, evening or night, based on the visitor's local clock
+- The dusk hour adjusts to the visitor's timezone (read via `Intl`, so no location permission is needed)
+- Night-only stars, fireflies and a glowing lamp; flocks of birds by day
+- A time pill to preview each look, which reverts to the real time after 10 seconds
+- Sections for work, projects, what I'm exploring, and contact
+- Responsive layout, a skip link, keyboard focus styles and `prefers-reduced-motion` support
 
 ## Run locally
 
 Open `index.html` in a browser, or serve the folder:
 
 ```bash
-npx serve .
-# or
 python -m http.server 8000
 ```
 
 ## Tech
 
-HTML5 · CSS3 (custom properties, grid, flexbox) · Vanilla JavaScript (ES6+)
+HTML5 · CSS3 (custom properties, grid, keyframe animations) · Vanilla JavaScript
