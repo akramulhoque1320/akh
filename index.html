@@ -1298,13 +1298,8 @@
     });
   });
 
-  // tree stays fixed (no sway) — only the sky gets a very subtle scroll parallax
-  const skyLayers = document.querySelectorAll(".scene-layer.sky");
-  let scrollY = 0;
-  window.addEventListener("scroll", () => {
-    scrollY = window.scrollY;
-    skyLayers.forEach(l => { l.style.transform = `translateY(${scrollY * 0.12}px)`; });
-  }, { passive:true });
+  // hero scene layers stay fixed: no scroll parallax
+
   // project filters
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
