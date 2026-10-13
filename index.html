@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akramul Hoque (Ahnaf) — Software Engineer</title>
+  <meta name="description" content="Portfolio of Akramul Hoque (Ahnaf), software engineer in Dhaka, Bangladesh." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a href="#home" class="logo">Ahnaf<span>.</span></a>
+    <nav>
+      <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" aria-label="Toggle colour theme">🌙</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <p class="eyebrow">Hi, I'm</p>
+      <h1>Akramul Hoque <span class="accent">(Ahnaf)</span></h1>
+      <h2 class="typing" aria-live="polite"></h2>
+      <p class="lead">I design, build and ship reliable software, from system design to production deploys.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn primary">View projects</a>
+        <a href="#contact" class="btn ghost">Contact me</a>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <h2 class="section-title">About me</h2>
+      <p>
+        I'm a software engineer at <strong>Infinity Vision</strong> in Dhaka, Bangladesh. I work end to end:
+        databases, APIs, frontends, testing and deployment, with a focus on performance, security and clean,
+        maintainable code.
+      </p>
+    </section>
+
+    <section id="skills" class="section reveal">
+      <h2 class="section-title">Skills</h2>
+      <ul class="chips">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li><li>Python</li>
+        <li>Java</li><li>PHP</li><li>React</li><li>Node.js</li><li>Django</li>
+        <li>Flask</li><li>Laravel</li><li>SQL</li><li>MongoDB</li><li>Docker</li><li>Git</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="section reveal">
+      <h2 class="section-title">Projects</h2>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="python">Python</button>
+        <button class="filter" data-filter="java">Java</button>
+        <button class="filter" data-filter="web">Web</button>
+      </div>
+      <div class="grid" id="project-grid"></div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <h2 class="section-title">Contact</h2>
+      <form class="contact-form" novalidate>
+        <label>Name <input type="text" name="name" required /></label>
+        <label>Email <input type="email" name="email" required /></label>
+        <label>Message <textarea name="message" rows="4" required></textarea></label>
+        <p class="form-msg" role="status"></p>
+        <button type="submit" class="btn primary">Send message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Akramul Hoque (Ahnaf) ·
+      <a href="https://github.com/akramulhoque1320">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/akh1320/">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
