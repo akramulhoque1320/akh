@@ -1658,14 +1658,20 @@
   }
 
   applyTimeSlot(currentTimeSlot());
-  setInterval(() => applyTimeSlot(currentTimeSlot()), 60000);
 
+  // A picked slot is a 6-second preview, then the scene returns to the
+  // visitor's real time of day. The minute check doesn't interrupt a preview.
+  const PREVIEW_MS = 6000;
   let previewTimer = null;
+  setInterval(() => { if (!previewTimer) applyTimeSlot(currentTimeSlot()); }, 60000);
   document.querySelectorAll(".time-pill button").forEach(btn => {
     btn.addEventListener("click", () => {
       applyTimeSlot(btn.dataset.time);
       clearTimeout(previewTimer);
-      previewTimer = setTimeout(() => applyTimeSlot(currentTimeSlot()), 10000);
+      previewTimer = setTimeout(() => {
+        previewTimer = null;
+        applyTimeSlot(currentTimeSlot());
+      }, PREVIEW_MS);
     });
   });
 
