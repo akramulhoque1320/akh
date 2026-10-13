@@ -693,7 +693,8 @@
   .btn-ghost svg{ width:14px; height:14px; }
 
   /* ---------- footer ---------- */
-  .site-footer{ padding:80px 0 32px; border-top:1px solid var(--line); overflow:hidden; }
+  .site-footer{ padding:96px 0 36px; border-top:1px solid var(--line); overflow:hidden; isolation:isolate; }
+  .site-footer .wrap{ position:relative; z-index:1; }
   .footer-grid{ display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px; }
   .footer-brand .logo{ font-size:24px; }
   .footer-brand p{ color:var(--ink-dim); font-size:14.5px; max-width:34ch; margin:14px 0 0; }
@@ -701,17 +702,19 @@
   .footer-h{ margin:0 0 6px; font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); }
   .footer-col a{ text-decoration:none; font-size:14.5px; width:fit-content; transition:color 0.2s ease, transform 0.2s ease; }
   .footer-col a:hover{ color:var(--accent); transform:translateX(3px); }
+  /* big outlined wordmark sitting behind the footer content */
   .footer-word{
-    margin:56px 0 0; text-align:center; user-select:none;
+    position:absolute; left:50%; top:50%; transform:translate(-50%, -46%);
+    margin:0; z-index:0; pointer-events:none; user-select:none; white-space:nowrap;
     font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.04em;
-    font-size:clamp(90px, 24vw, 330px); line-height:0.8;
-    color:transparent; -webkit-text-stroke:1px rgba(241,237,228,0.16);
-    background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 35%, transparent), transparent 85%);
+    font-size:clamp(130px, 30vw, 420px); line-height:0.8;
+    color:transparent; -webkit-text-stroke:1px rgba(241,237,228,0.14);
+    background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 20%, transparent) 10%, transparent 75%);
     -webkit-background-clip:text; background-clip:text;
   }
   .footer-bottom{
     display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
-    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+    margin-top:120px; padding-top:24px; border-top:1px solid var(--line);
     font-size:13px; color:var(--ink-dim);
   }
   .to-top{
@@ -850,7 +853,7 @@
       <button class="sound-btn" id="sound-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Replay with sound</span></button>
       <ul class="hero-stats">
         <li><strong>4+</strong><span>Years of experience</span></li>
-        <li><strong>10</strong><span>Projects shipped</span></li>
+        <li><strong>98</strong><span>Projects shipped</span></li>
         <li><strong>3</strong><span>Companies</span></li>
       </ul>
     </div>
@@ -1027,15 +1030,6 @@
             <p class="card-desc">Console system for books, members, 14-day loans, late fines and file-based storage.</p>
             <ul class="card-tags"><li>Java 17</li><li>OOP</li><li>Collections</li></ul>
           </article>
-          <article class="card" data-cat="web">
-            <div class="card-top">
-              <span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
-              <div class="card-links"><a href="https://github.com/akramulhoque1320/frontend-portfolio" target="_blank" rel="noopener" aria-label="Frontend Portfolio source code on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a><a href="https://akramulhoque1320.github.io/frontend-portfolio/" target="_blank" rel="noopener" aria-label="Open Frontend Portfolio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
-            </div>
-            <h3 class="card-title"><a href="https://github.com/akramulhoque1320/frontend-portfolio" target="_blank" rel="noopener">Frontend Portfolio</a></h3>
-            <p class="card-desc">This site: the sky, light and greeting follow the visitor's own clock.</p>
-            <ul class="card-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-          </article>
         </div>
       </div>
     </section>
@@ -1058,7 +1052,7 @@
               <p class="t-line"><span class="t-prompt">~ $</span> <span class="t-cmd">cat exploring.md</span></p>
               <p class="t-out">TypeScript &amp; Node.js services, Docker-based deploys, and faster, more secure apps.</p>
               <p class="t-line"><span class="t-prompt">~ $</span> <span class="t-cmd">uptime</span></p>
-              <p class="t-out"><span class="t-accent">4+ years</span> shipping web software · <span class="t-accent">10</span> projects shipped</p>
+              <p class="t-out"><span class="t-accent">4+ years</span> shipping web software · <span class="t-accent">98</span> projects shipped</p>
               <p class="t-line"><span class="t-prompt">~ $</span> <span class="t-cmd">echo $STATUS</span></p>
               <p class="t-out t-ok">● open to freelance &amp; full-time work</p>
               <p class="t-line t-end"><span class="t-prompt">~ $</span> <span class="t-caret"></span></p>
@@ -1109,6 +1103,7 @@
   </main>
 
   <footer class="site-footer">
+    <p class="footer-word" aria-hidden="true">akram.</p>
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -1131,9 +1126,8 @@
           <a href="assets/Akramul-Hoque-Resume.pdf" download>Resume (PDF)</a>
         </div>
       </div>
-      <p class="footer-word" aria-hidden="true">akram.</p>
       <div class="footer-bottom">
-        <span>© <span id="year">2026</span> Akramul Hoque · Hand-built with HTML, CSS &amp; JavaScript</span>
+        <span>© <span id="year">2026</span> Akramul Hoque</span>
         <a href="#" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
       </div>
     </div>
