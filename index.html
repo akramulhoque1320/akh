@@ -216,15 +216,41 @@
     background:radial-gradient(circle, rgba(255,197,120,0.7) 0%, rgba(255,180,100,0.3) 42%, transparent 72%);
     mix-blend-mode:screen;
     transform-origin:50% -58px;
-    animation:lamp-live 5.5s ease-in-out infinite;
+    animation:lamp-live 5.5s ease-in-out infinite,
+              lamp-flicker 4.3s linear infinite;
     pointer-events:none;
   }
+  .lamp-glow::before{
+    content:"";
+    position:absolute; inset:-130px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,190,110,0.28) 0%, rgba(255,170,90,0.12) 38%, transparent 70%);
+    mix-blend-mode:screen;
+  }
   @keyframes lamp-live{
-    0%   { opacity:0.82; transform:rotate(-2.2deg) scale(0.97); }
-    22%  { opacity:1;    transform:rotate(0.6deg)  scale(1.06); }
-    48%  { opacity:0.68; transform:rotate(2.2deg)  scale(0.94); }
-    74%  { opacity:0.97; transform:rotate(-0.4deg) scale(1.03); }
-    100% { opacity:0.82; transform:rotate(-2.2deg) scale(0.97); }
+    0%   { transform:rotate(-2.2deg) scale(0.97); }
+    22%  { transform:rotate(0.6deg)  scale(1.06); }
+    48%  { transform:rotate(2.2deg)  scale(0.94); }
+    74%  { transform:rotate(-0.4deg) scale(1.03); }
+    100% { transform:rotate(-2.2deg) scale(0.97); }
+  }
+  @keyframes lamp-flicker{
+    0%   { opacity:0.85; }
+    7%   { opacity:1; }
+    9%   { opacity:0.3; }
+    11%  { opacity:0.95; }
+    13%  { opacity:0.45; }
+    15%  { opacity:1; }
+    34%  { opacity:0.78; }
+    50%  { opacity:1; }
+    52%  { opacity:0.2; }
+    55%  { opacity:0.9; }
+    70%  { opacity:0.7; }
+    72%  { opacity:1; }
+    88%  { opacity:0.82; }
+    90%  { opacity:0.4; }
+    92%  { opacity:1; }
+    100% { opacity:0.85; }
   }
 
   .birds{
@@ -384,6 +410,7 @@
   }
   .work-links a:hover{ border-color:var(--accent); color:var(--accent); }
   .work-links svg{ width:12px; height:12px; }
+  .work-links span{ font-size:13px; color:var(--ink-dim); }
 
   .stack{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:18px 0 0; padding:0; }
   .stack li{
@@ -528,8 +555,65 @@
               maintainable code.</p>
             <ul class="stack">
               <li>TypeScript</li><li>JavaScript</li><li>Python</li><li>PHP</li><li>Java</li>
-              <li>React</li><li>Node.js</li><li>SQL &amp; NoSQL</li><li>Docker</li>
+              <li>Laravel</li><li>React</li><li>Node.js</li><li>SQL &amp; NoSQL</li><li>Docker</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" id="laravel">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Laravel projects.</h2>
+          <p>Live client sites and apps I've built with Laravel.</p>
+        </div>
+
+        <div class="work-item">
+          <span class="work-index">01</span>
+          <div>
+            <p class="work-meta">LARAVEL · FILAMENT · ENGLISH / BANGLA</p>
+            <h3 class="work-role"><a href="https://wonderkdc.com" target="_blank" rel="noopener">Wonder Kids Development Center</a></h3>
+            <p class="work-desc">Website for an autism and child development centre in Uttara, Dhaka: eight therapy services, appointment and assessment booking, events, gallery, blog and donations, all managed from a Filament admin.</p>
+            <p class="work-links">
+              <a href="https://wonderkdc.com" target="_blank" rel="noopener">Visit wonderkdc.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <span class="work-index">02</span>
+          <div>
+            <p class="work-meta">LARAVEL 12 · FILAMENT · E-COMMERCE</p>
+            <h3 class="work-role"><a href="https://smartlifeorg.com" target="_blank" rel="noopener">SmartLife</a></h3>
+            <p class="work-desc">Online store for a Dubai tech-accessories brand: category catalogue, cart, wishlist, customer accounts, order tracking, cash-on-delivery and card checkout, with an English/Arabic switch.</p>
+            <p class="work-links">
+              <a href="https://smartlifeorg.com" target="_blank" rel="noopener">Visit smartlifeorg.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <span class="work-index">03</span>
+          <div>
+            <p class="work-meta">LARAVEL · MONGODB · E-COMMERCE</p>
+            <h3 class="work-role">Hello Baby Bees</h3>
+            <p class="work-desc">Kids' clothing shop with a customer storefront and a Laravel admin panel backed by MongoDB.</p>
+            <p class="work-links">
+              <span>Private codebase</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <span class="work-index">04</span>
+          <div>
+            <p class="work-meta">LARAVEL · BLADE · ELOQUENT</p>
+            <h3 class="work-role">Budget Tracker</h3>
+            <p class="work-desc">Personal finance app to log income and expenses, see balances on a dashboard and read monthly reports.</p>
+            <p class="work-links">
+              <span>Private codebase</span>
+            </p>
           </div>
         </div>
       </div>
@@ -538,7 +622,7 @@
     <section class="page-section" id="projects">
       <div class="wrap">
         <div class="section-head">
-          <h2>Things I've built.</h2>
+          <h2>Open-source projects.</h2>
           <p>Open-source projects, all public on GitHub with source and setup notes.</p>
         </div>
 
