@@ -897,7 +897,7 @@
     body[data-time="evening"] .scene{ background-color:#2b3d3a; }
     body[data-time="night"] .scene{ background-color:#010511; }
     .scene-layer{
-      inset:auto 0 0 0; height:var(--scene-h);
+      inset:auto -8% 0 -8%; height:calc(var(--scene-h) * 1.16);
       background-size:100% 100%;
       -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 42%);
               mask-image:linear-gradient(to bottom, transparent 0, #000 42%);
@@ -905,19 +905,19 @@
     /* darken the sky behind the text, and fade the scene into the page below */
     .scene::before{
       content:""; position:absolute; inset:0; z-index:4; pointer-events:none;
-      background:linear-gradient(180deg, rgba(6,7,10,0.55) 0%, rgba(6,7,10,0.4) 58%, rgba(6,7,10,0.3) 72%, rgba(6,7,10,0) 86%);
+      background:linear-gradient(180deg, rgba(6,7,10,0.5) 0%, rgba(6,7,10,0.42) 45%, rgba(6,7,10,0.5) 75%, rgba(6,7,10,0.62) 100%);
     }
     .scene::after{
       content:""; position:absolute; inset:auto 0 0 0; height:18%; z-index:6; pointer-events:none;
       background:linear-gradient(180deg, transparent, var(--bg));
     }
-    .hero-content{ padding-top:150px; padding-bottom:calc(var(--scene-h) * 0.6); }
+    .hero-content{ padding-top:170px; padding-bottom:calc(var(--scene-h) * 0.2); }
     .hero-content .greeting, .hero-content .hero-sub, .hero-stats strong, .hero-stats span{ text-shadow:0 1px 10px rgba(0,0,0,0.55); }
     .scroll-hint{ display:none; }
   }
   /* phones: slightly smaller intro text */
   @media (max-width:640px){
-    .hero-content{ padding-top:140px; }
+    .hero-content{ padding-top:168px; }
     .greeting{ font-size:13px; margin-bottom:12px; }
     h1.hero-title{ font-size:34px; margin-bottom:14px; }
     .hero-sub{ font-size:14.5px; line-height:1.55; margin-bottom:22px; max-width:36ch; }
