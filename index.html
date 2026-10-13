@@ -1090,6 +1090,28 @@
     .contact-actions{ gap:8px; margin-top:16px; }
     .contact-actions .btn-primary, .contact-actions .btn-ghost{ padding:10px 16px; font-size:13px; }
   }
+.hero-stats em{ font-style:normal; }
+  .s-short{ display:none; }
+
+  /* phones: stats as one glass card with three equal, divided cells */
+  @media (max-width:640px){
+    .s-long{ display:none; }
+    .s-short{ display:inline; }
+    .hero-stats{
+      display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:0;
+      margin-top:26px; padding:14px 4px; border-top:none;
+      border:1px solid rgba(241,237,228,0.14); border-radius:14px;
+      background:rgba(10,11,14,0.55);
+      -webkit-backdrop-filter:blur(10px) saturate(130%); backdrop-filter:blur(10px) saturate(130%);
+    }
+    .hero-stats li{ text-align:center; padding:0 6px; }
+    .hero-stats li + li{ border-left:1px solid rgba(241,237,228,0.14); }
+    .hero-stats strong{ font-size:24px; line-height:1; text-shadow:none; }
+    .hero-stats span{
+      margin-top:7px; font-size:9.5px; line-height:1.35; font-weight:600;
+      letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); text-shadow:none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1167,9 +1189,9 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <ul class="hero-stats">
-        <li><strong>4+</strong><span>Years of experience</span></li>
-        <li><strong>98</strong><span>Projects shipped</span></li>
-        <li><strong>3</strong><span>Companies</span></li>
+        <li><strong>4+</strong><span><em class="s-long">Years of experience</em><em class="s-short">Years experience</em></span></li>
+        <li><strong>98</strong><span><em class="s-long">Projects shipped</em><em class="s-short">Projects shipped</em></span></li>
+        <li><strong>3</strong><span><em class="s-long">Companies</em><em class="s-short">Companies</em></span></li>
       </ul>
     </div>
 
