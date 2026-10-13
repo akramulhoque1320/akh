@@ -707,9 +707,9 @@
     position:absolute; left:50%; top:50%; transform:translate(-50%, -46%);
     margin:0; z-index:0; pointer-events:none; user-select:none; white-space:nowrap;
     font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.04em;
-    font-size:clamp(130px, 30vw, 420px); line-height:0.8;
-    color:transparent; -webkit-text-stroke:1px rgba(241,237,228,0.14);
-    background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 20%, transparent) 10%, transparent 75%);
+    font-size:clamp(130px, 32vw, 560px); line-height:0.8;
+    color:transparent; -webkit-text-stroke:1px rgba(241,237,228,0.16);
+    background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 40%, transparent) 5%, transparent 80%);
     -webkit-background-clip:text; background-clip:text;
   }
   .footer-bottom{
@@ -763,19 +763,6 @@
   .resume-btn:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-1px); }
   .resume-btn svg{ width:14px; height:14px; }
   .tl-badge.date{ text-transform:none; letter-spacing:0.01em; font-variant-numeric:tabular-nums; }
-  .sound-btn{
-    display:inline-flex; align-items:center; gap:8px; margin-left:26px; cursor:pointer;
-    font-family:'Inter', sans-serif; font-size:13px; font-weight:600;
-    padding:8px 14px; border-radius:100px;
-    background:rgba(14,16,14,0.45); color:var(--ink);
-    border:1px solid rgba(255,255,255,0.18);
-    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
-    transition: border-color 0.2s ease, color 0.2s ease;
-    vertical-align:middle;
-  }
-  .sound-btn:hover{ border-color:var(--accent); color:var(--accent); }
-  .sound-btn svg{ width:15px; height:15px; }
-  @media (max-width:640px){ .sound-btn{ margin:18px 0 0; display:flex; width:fit-content; } }
 </style>
 </head>
 <body>
@@ -850,7 +837,6 @@
         See my work
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <button class="sound-btn" id="sound-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Replay with sound</span></button>
       <ul class="hero-stats">
         <li><strong>4+</strong><span>Years of experience</span></li>
         <li><strong>98</strong><span>Projects shipped</span></li>
@@ -1397,7 +1383,6 @@
     const h1 = document.querySelector(".hero-title.typer");
     const live = h1.querySelector(".type-text");
     const caret = h1.querySelector(".type-caret");
-    const btn = document.getElementById("sound-btn");
     const TEXT = h1.getAttribute("aria-label");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let audio = null;
@@ -1446,8 +1431,10 @@
     }
 
     const wait = ms => new Promise(r => setTimeout(r, ms));
+    let typing = false;
     async function type(){
       const id = ++run;
+      typing = true;
       live.textContent = "";
       caret.classList.add("is-typing");
       await wait(350);
@@ -1457,20 +1444,36 @@
         keySound(ch);
         await wait(ch === "," ? 320 : ch === " " ? 120 : 75 + Math.random() * 95);
       }
+      typing = false;
       caret.classList.remove("is-typing");
     }
 
     if (reduce){ live.textContent = TEXT; return; }
 
-    // browsers only allow sound after the visitor interacts with the page,
-    // so the first click/tap/key unlocks it (typing continues with sound)
-    const unlock = () => { getAudio(); window.removeEventListener("pointerdown", unlock); window.removeEventListener("keydown", unlock); };
-    window.addEventListener("pointerdown", unlock);
-    window.addEventListener("keydown", unlock);
-    getAudio();
+    // Browsers block sound until the visitor first clicks, taps or presses a
+    // key. Sound plays straight away when allowed; otherwise that first
+    // interaction switches it on: mid-typing it just continues with sound,
+    // after typing it types the headline again with sound (once, if visible).
+    let heardSound = false;
+    const GESTURES = ["pointerdown", "keydown", "touchstart"];
+    const onScreen = () => { const r = h1.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
+    function firstGesture(){
+      GESTURES.forEach(e => window.removeEventListener(e, firstGesture, true));
+      const ac = getAudio();
+      if (!ac) return;
+      ac.resume().then(() => {
+        if (heardSound) return;
+        heardSound = true;
+        if (!typing && onScreen()) type();
+      }).catch(() => {});
+    }
+    GESTURES.forEach(e => window.addEventListener(e, firstGesture, { capture:true, passive:true }));
 
-    btn.addEventListener("click", () => { getAudio(); type(); });
-    setTimeout(type, 500);
+    setTimeout(() => {
+      const ac = getAudio();
+      if (ac && ac.state === "running") heardSound = true;
+      type();
+    }, 500);
   })();
 </script>
 
